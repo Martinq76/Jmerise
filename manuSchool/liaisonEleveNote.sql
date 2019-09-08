@@ -1,0 +1,5 @@
+SELECT `Eleves`.`Nom`,`Eleves`.`Prenom`,`Notes`.`Notes`,`Matieres`.`Matieres` FROM `Eleves` INNER JOIN `Notes` ON `Eleves`.`id`=`Notes`.`id_Eleves` INNER JOIN `Matieres` ON `Notes`.`id_Matieres`=`Matieres`.`id`;
+
+SELECT `Eleves`.`Nom`,`Eleves`.`Prenom`,`Classe`.`Classe`,`Professeurs`.`Prenom`,`Professeurs`.`Nom`,AVG(`Notes`.`Notes`) AS `Moyenne` FROM `Eleves` INNER JOIN `Classe` ON `Eleves`.`id_Classe` = `Classe`.`id` INNER JOIN `Professeurs` ON `Classe`.`id_Professeurs`=`Professeurs`.`id` INNER JOIN `Notes` ON `Eleves`.`id`=`Notes`.`id_Eleves` GROUP BY `Eleves`.`id`;
+
+SELECT `Professeurs`.`Prenom`,`Professeurs`.`Nom`,`Classe`.`Classe`,`Eleves`.`Nom`,`Eleves`.`Prenom` FROM `Professeurs` INNER JOIN `Classe` ON `Professeurs`.`id` = `Classe`.`id_Professeurs` INNER JOIN `Eleves` ON `Classe`.`id` = `Eleves`.`id_Classe`;
